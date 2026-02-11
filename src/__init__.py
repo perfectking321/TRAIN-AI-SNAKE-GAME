@@ -1,4 +1,4 @@
-"""AI Snake Game - Reinforcement Learning Demo
+"""AI Snake Game - Reinforcement Learning Agent
 
 Main package for training and running AI agents to play Snake.
 """

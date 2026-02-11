@@ -1,4 +1,4 @@
-# 🐍 AI Snake Game
+# 🐍 AI Snake Game - Reinforcement Learning Agent
 
 Train an AI to play Snake using Deep Q-Learning (DQN) with PyTorch. I built this to learn reinforcement learning and ended up creating a hybrid system that combines neural networks with Hamiltonian cycles for better performance.
 

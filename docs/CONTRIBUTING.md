@@ -1,6 +1,6 @@
-# Contributing to AI Snake Game
+# Contributing to AI Snake Game - Reinforcement Learning Agent
 
-Thank you for your interest in contributing to the AI Snake Game project! We welcome contributions from the community.
+Thank you for your interest in contributing to the AI Snake Game - Reinforcement Learning Agent project! We welcome contributions from the community.
 
 ## 🚀 Getting Started
 
@@ -219,4 +219,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ---
 
-**Thank you for making AI Snake Game better! 🐍🎮**
+**Thank you for making AI Snake Game - Reinforcement Learning Agent better! 🐍🎮**

@@ -1,6 +1,6 @@
 # 📁 Repository Organization Summary
 
-This document summarizes the reorganization of the AI Snake Game repository.
+This document summarizes the reorganization of the AI Snake Game - Reinforcement Learning Agent repository.
 
 ## 🔄 Changes Made
 
@@ -165,7 +165,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 5. ✅ Consider creating releases/tags
 
 ### GitHub Repository Settings
-- **Description**: "AI Snake Game using Deep Q-Learning and Hamiltonian Cycle | PyTorch + Pygame"
+- **Description**: "AI Snake Game - Reinforcement Learning Agent using Deep Q-Learning and Hamiltonian Cycle | PyTorch + Pygame"
 - **Topics**: `python`, `pytorch`, `deep-learning`, `reinforcement-learning`, `dqn`, `snake-game`, `pygame`, `ai`, `machine-learning`
 - **Website**: (Link to demo or documentation if hosted)
 
