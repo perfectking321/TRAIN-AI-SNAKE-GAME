@@ -7,11 +7,11 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from game import SnakeGameAI
+from src.game import SnakeGameAI
 
 # Import both agents
-from agent import Agent as PureAgent
-from agent_hybrid import HybridAgent
+from src.agent import Agent as PureAgent
+from src.agent_hybrid import HybridAgent
 
 def run_comparison_test(num_games=10):
     """

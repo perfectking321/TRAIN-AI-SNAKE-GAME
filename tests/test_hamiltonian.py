@@ -10,7 +10,7 @@ from collections import namedtuple
 # Add project to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hamiltonian_path import HamiltonianPath, Direction, Point
+from src.hamiltonian_path import HamiltonianPath, Direction, Point
 
 def test_hamiltonian_initialization():
     """Test 1: Hamiltonian path initialization"""

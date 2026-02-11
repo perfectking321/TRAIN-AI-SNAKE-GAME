@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hamiltonian_path import HamiltonianPath, Point, Direction
+from src.hamiltonian_path import HamiltonianPath, Point, Direction
 
 def visualize_path_ascii():
     """Visualize first few steps of Hamiltonian path in ASCII"""

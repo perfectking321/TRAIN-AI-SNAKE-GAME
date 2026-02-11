@@ -3,9 +3,14 @@ import random
 from enum import Enum
 from collections import namedtuple
 import numpy as np
+import os
 
 pygame.init()
-font = pygame.font.Font('assets/arial.ttf', 25)
+# Get the font path relative to project root
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_project_root = os.path.dirname(_current_dir)
+_font_path = os.path.join(_project_root, 'assets', 'arial.ttf')
+font = pygame.font.Font(_font_path, 25)
 #font = pygame.font.SysFont('arial', 25)
 
 class Direction(Enum):

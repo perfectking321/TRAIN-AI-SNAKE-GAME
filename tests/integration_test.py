@@ -8,8 +8,8 @@ os.environ['SDL_VIDEODRIVER'] = 'dummy'  # Run pygame in headless mode
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from game import SnakeGameAI
-from agent_hybrid import HybridAgent
+from src.game import SnakeGameAI
+from src.agent_hybrid import HybridAgent
 
 def test_hybrid_agent_basic():
     """Test basic hybrid agent functionality"""

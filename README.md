@@ -28,15 +28,15 @@ pip install -r requirements.txt
 Start training:
 ```bash
 # Standard DQN agent
-python agent.py
+python train.py
 
 # Hybrid agent (DQN + Hamiltonian safety net)
-python agent_hybrid.py
+python train_hybrid.py
 ```
 
 Watch it play:
 ```bash
-python demo_hybrid.py
+python demo.py
 ```
 
 ## 🧠 How It Works
@@ -55,16 +55,21 @@ When the AI detects it's in danger (safety < 30%), it switches to a Hamiltonian 
 ## 📁 Project Structure
 
 ```
-├── agent.py               # Standard DQN agent
-├── agent_hybrid.py        # Hybrid DQN + Hamiltonian
-├── game.py                # Snake game environment
-├── model.py               # Neural network (PyTorch)
-├── hamiltonian_path.py    # Safety fallback path
-├── helper.py              # Plotting utilities
-├── demo_hybrid.py         # Watch the AI play
+├── src/                   # Source code
+│   ├── agent.py           # Standard DQN agent
+│   ├── agent_hybrid.py    # Hybrid DQN + Hamiltonian
+│   ├── game.py            # Snake game environment
+│   ├── model.py           # Neural network (PyTorch)
+│   ├── hamiltonian_path.py # Safety fallback path
+│   ├── helper.py          # Plotting utilities
+│   └── demo_hybrid.py     # Interactive demo
+├── train.py               # Train standard agent
+├── train_hybrid.py        # Train hybrid agent
+├── demo.py                # Watch the AI play
 ├── tests/                 # Test scripts
 ├── docs/                  # Detailed documentation
-└── model/                 # Saved checkpoints
+├── assets/                # Fonts and resources
+└── model/                src/ # Saved checkpoints
 ```
 
 ## 🔧 Configuration
@@ -103,7 +108,7 @@ I wanted to learn reinforcement learning and figured Snake was a perfect startin
 
 ## 💡 Contributing
 
-Feel free to fork it and experiment! If you come up with better reward strategies or improvements, open a PR. Check [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Feel free to fork it and experiment! If you come up with better reward strategies or improvements, open a PR. Check [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
 
 ## 📝 License
 
