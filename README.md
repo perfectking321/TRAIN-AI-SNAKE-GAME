@@ -20,8 +20,22 @@ git clone https://github.com/yourusername/ai-snake-game.git
 cd ai-snake-game
 ```
 
-Install dependencies:
+Install dependencies (option 1 - automated setup):
 ```bash
+./setup.sh
+```
+
+Or install manually (option 2):
+```bash
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate  # On Linux/Mac
+# or
+venv\Scripts\activate  # On Windows
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
