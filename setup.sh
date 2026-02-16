@@ -33,41 +33,45 @@ pip install -r requirements.txt
 
 # Verify installation
 echo "🔍 Verifying installation..."
+VERIFICATION_FAILED=0
+
 if ! python -c "import torch" 2>/dev/null; then
     echo "❌ Failed to import torch"
-    exit 1
+    VERIFICATION_FAILED=1
 fi
 
 if ! python -c "import pygame" 2>/dev/null; then
     echo "❌ Failed to import pygame"
-    exit 1
+    VERIFICATION_FAILED=1
 fi
 
 if ! python -c "import numpy" 2>/dev/null; then
     echo "❌ Failed to import numpy"
-    exit 1
+    VERIFICATION_FAILED=1
 fi
 
 if ! python -c "import matplotlib" 2>/dev/null; then
     echo "❌ Failed to import matplotlib"
-    exit 1
+    VERIFICATION_FAILED=1
 fi
 
 if ! python -c "import IPython" 2>/dev/null; then
     echo "⚠️  Warning: IPython not installed (optional dependency)"
 fi
 
-echo "✅ All core dependencies installed successfully!"
+if [ $VERIFICATION_FAILED -eq 1 ]; then
     echo ""
-    echo "To activate the virtual environment, run:"
-    echo "  source venv/bin/activate"
-    echo ""
-    echo "To train the model, run:"
-    echo "  python train.py"
-    echo ""
-    echo "To run the demo, run:"
-    echo "  python demo.py"
-else
     echo "❌ Some dependencies failed to install. Please check the error messages above."
     exit 1
 fi
+
+echo "✅ All core dependencies installed successfully!"
+echo ""
+echo "To activate the virtual environment, run:"
+echo "  source venv/bin/activate"
+echo ""
+echo "To train the model, run:"
+echo "  python train.py"
+echo ""
+echo "To run the demo, run:"
+echo "  python demo.py"
