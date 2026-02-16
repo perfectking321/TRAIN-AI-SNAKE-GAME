@@ -1,8 +1,8 @@
 # Core Dependencies
-torch
-pygame
-numpy
-matplotlib
+torch>=2.0.0
+pygame>=2.5.0
+numpy>=1.24.0
+matplotlib>=3.7.0
 
 # Optional but recommended
-ipython
+ipython>=8.0.0
