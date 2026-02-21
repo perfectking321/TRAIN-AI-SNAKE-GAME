@@ -1,52 +1,72 @@
 """
-Train the standard DQN agent to play Snake
+Snake AI — DQN Training
+Run:  python train.py
 """
+import matplotlib
+matplotlib.use('TkAgg')          # live window; change to Qt5Agg if you have pyqt5
+import matplotlib.pyplot as plt
+
 from src.agent import Agent
 from src.game import SnakeGameAI
-from src.helper import plot
+
 
 def train():
-    plot_scores = []
-    plot_mean_scores = []
-    total_score = 0
-    agent = Agent()
-    game = SnakeGameAI()
-    
+    scores      = []
+    mean_scores = []
+    total       = 0
+    agent       = Agent()
+    game        = SnakeGameAI()
+
+    # ── Live plot setup ──────────────────────────────────────────────
+    plt.ion()
+    fig, ax = plt.subplots(figsize=(6, 4))
+    fig.canvas.manager.set_window_title('Snake AI — Training')
+
+    def refresh_plot():
+        ax.clear()
+        ax.set_title('Score over Games')
+        ax.set_xlabel('Game')
+        ax.set_ylabel('Score')
+        ax.plot(scores,      label='Score',      color='steelblue')
+        ax.plot(mean_scores, label='Mean Score', color='orange', linestyle='--')
+        if scores:
+            ax.text(len(scores) - 1,      scores[-1],      str(scores[-1]),      fontsize=8)
+        if mean_scores:
+            ax.text(len(mean_scores) - 1, mean_scores[-1], f'{mean_scores[-1]:.1f}', fontsize=8)
+        ax.legend()
+        ax.set_ylim(bottom=0)
+        plt.tight_layout()
+        plt.pause(0.001)
+    # ─────────────────────────────────────────────────────────────────
+
     while True:
-        # get old state
-        state_old = agent.get_state(game)
-        
-        # get move
-        final_move = agent.get_action(state_old)
-        
-        # perform move and get new state
-        reward, done, score = game.play_step(final_move)
-        state_new = agent.get_state(game)
-        
-        # train short memory
-        agent.train_short_memory(state_old, final_move, reward, state_new, done)
-        
-        # remember
-        agent.remember(state_old, final_move, reward, state_new, done)
-        
+        state_old  = agent.get_state(game)
+        move       = agent.get_action(state_old)
+        reward, done, score = game.play_step(move)
+        state_new  = agent.get_state(game)
+
+        agent.train_short_memory(state_old, move, reward, state_new, done)
+        agent.remember(state_old, move, reward, state_new, done)
+
         if done:
-            # train long memory, plot result
             game.reset()
             agent.n_games += 1
             agent.train_long_memory()
-            
-            if score > agent.record:
+
+            scores.append(score)
+            total    += score
+            mean      = total / agent.n_games
+            mean_scores.append(mean)
+
+            if score >= agent.record:
                 agent.record = score
-                agent.model.save(record=agent.record, n_games=agent.n_games, 
-                               mean_score=total_score/agent.n_games)
-            
-            print(f'Game {agent.n_games} Score {score} Record: {agent.record}')
-            
-            plot_scores.append(score)
-            total_score += score
-            mean_score = total_score / agent.n_games
-            plot_mean_scores.append(mean_score)
-            plot(plot_scores, plot_mean_scores)
+                agent.model.save(record=agent.record,
+                                 n_games=agent.n_games,
+                                 mean_score=mean)
+
+            print(f'Game {agent.n_games:4d} | Score {score:3d} | Record {agent.record:3d} | Mean {mean:.2f}')
+            refresh_plot()
+
 
 if __name__ == '__main__':
     train()
